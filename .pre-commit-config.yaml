@@ -1,0 +1,50 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+      - id: check-ast
+
+  - repo: https://github.com/asottile/pyupgrade
+    rev: master
+    hooks:
+      - id: pyupgrade
+
+  - repo: local
+    hooks:
+      - id: mypy
+        name: run mypy
+        language: system
+        entry: bash -c 'cd backend && poetry run mypy "${@/backend\//./}"' --
+        types: [python]
+        files: ^backend/
+
+      - id: flake8
+        name: run flake8
+        language: system
+        entry: bash -c 'cd backend && poetry run flake8 "${@/backend\//./}"' --
+        types: [python]
+        files: ^backend/
+
+      - id: isort
+        name: run isort
+        language: system
+        entry: bash -c 'cd backend && poetry run isort "${@/backend\//./}"' --
+        types: [python]
+        files: ^backend/
+
+      - id: black
+        name: run black
+        language: system
+        entry: bash -c 'cd backend && poetry run black "${@/backend\//./}"' --
+        types: [python]
+        files: ^backend/
+
+      - id: prettier
+        name: run prettier
+        language: system
+        entry: bash -c 'cd frontend && npm run prettier "${@/frontend\//./}"' --
+        files: ^frontend/
