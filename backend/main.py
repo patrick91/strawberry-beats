@@ -11,7 +11,7 @@ from strawberry.asgi import GraphQL
 
 from api.schema import schema
 
-broadcast = Broadcast("memory://")
+broadcast = Broadcast("redis://10.102.173.219:6379")
 
 
 @dataclasses.dataclass
