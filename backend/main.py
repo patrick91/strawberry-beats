@@ -38,7 +38,9 @@ routes = [
     WebSocketRoute("/graphql", graphql_app),
 ]
 
-middleware = [Middleware(CORSMiddleware, allow_origins=["*"])]
+middleware = [
+    Middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["GET", "POST"])
+]
 
 app = Starlette(
     routes=routes,
