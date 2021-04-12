@@ -1,4 +1,3 @@
-import asyncio
 import random
 import strawberry
 from strawberry.types import Info
