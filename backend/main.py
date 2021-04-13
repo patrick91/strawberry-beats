@@ -1,20 +1,20 @@
 import dataclasses
+import os
 from typing import Optional, Union
-
-from starlette.middleware import Middleware
 
 from broadcaster import Broadcast
 from starlette.applications import Starlette
+from starlette.middleware import Middleware
+from starlette.middleware.cors import CORSMiddleware
 from starlette.requests import Request
 from starlette.responses import Response
 from starlette.routing import Route, WebSocketRoute
 from starlette.websockets import WebSocket
 from strawberry.asgi import GraphQL
-from starlette.middleware.cors import CORSMiddleware
 
 from api.schema import schema
 
-broadcast = Broadcast("memory://")
+broadcast = Broadcast(os.environ.get("BROADCASTER_URL", "memory://"))
 
 
 @dataclasses.dataclass
