@@ -1,8 +1,8 @@
 import { SubscriptionClient } from "subscriptions-transport-ws";
 import { Client, defaultExchanges, subscriptionExchange } from "urql";
 
-const WS_URL = "wss://strawberry-beats.onrender.com/graphql";
-const API_URL = "https://strawberry-beats.onrender.com/graphql";
+const WS_URL = "wss://beats.patrick.wtf/graphql";
+const API_URL = "https://beats.patrick.wtf/graphql";
 
 // const WS_URL = "ws://localhost:5000/graphql";
 // const API_URL = "http://localhost:5000/graphql";
