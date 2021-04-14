@@ -4,6 +4,12 @@ import { SpriteMap } from "use-sound/dist/types";
 
 import Head from "next/head";
 
+import { CowbellIcon } from "~/components/icons/cowbell";
+import { HiHatIcon } from "~/components/icons/hi-hat";
+import { KickIcon } from "~/components/icons/kick";
+import { SnareIcon } from "~/components/icons/snare";
+import { Logo } from "~/components/logo";
+
 const newMessages = `
   subscription OnSound {
     onSound {
@@ -25,17 +31,26 @@ const sprite = {
   cowbell: [968, 200],
 } as SpriteMap;
 
+const iconsMap = {
+  kick: KickIcon,
+  hihat: HiHatIcon,
+  snare: SnareIcon,
+  cowbell: CowbellIcon,
+};
+
 const PlayButton = ({ name }) => {
   const [_, play] = useMutation(playSound);
 
+  const Icon = iconsMap[name];
+
   return (
     <button
-      className="p-10 border border-gray-500"
+      className="p-10 bg-gray-300 text-gray-600 shadow-2xl fill-current rounded-md"
       onClick={() => {
         play({ name });
       }}
     >
-      {name}
+      <Icon className="w-12 h-12" />
     </button>
   );
 };
@@ -71,12 +86,16 @@ export default function Home() {
       <Head>
         <title>Strawberry beats</title>
       </Head>
-      <div className="w-screen h-screen border-4 relative border-green-500 bg-green-200 overflow-hidden">
+      <div className="flex flex-col items-center p-10">
+        <Logo />
+
         {process.browser && <Sounds />}
 
-        {Object.keys(sprite).map((name) => (
-          <PlayButton key={name} name={name} />
-        ))}
+        <div className="mt-20 flex space-x-10">
+          {Object.keys(sprite).map((name) => (
+            <PlayButton key={name} name={name} />
+          ))}
+        </div>
       </div>
     </>
   );
