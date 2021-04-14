@@ -91,7 +91,7 @@ export default function Home() {
 
         {process.browser && <Sounds />}
 
-        <div className="mt-20 flex space-x-10">
+        <div className="mt-20 grid grid-cols-2 gap-10">
           {Object.keys(sprite).map((name) => (
             <PlayButton key={name} name={name} />
           ))}
