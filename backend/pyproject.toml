@@ -14,7 +14,7 @@ asyncio-redis = "^0.16.0"
 
 [tool.poetry.dev-dependencies]
 black = {version = "^20.8b1", allow-prereleases = true}
-pdbpp = "^0.10.2"
+pdbpp = "^0.10.3"
 
 [build-system]
 build-backend = "poetry.core.masonry.api"
