@@ -8,7 +8,7 @@ version = "0.1.0"
 [tool.poetry.dependencies]
 broadcaster = "^0.2.0"
 python = "^3.8"
-strawberry-graphql = "^0.56.2"
+strawberry-graphql = "^0.93.16"
 uvicorn = {extras = ["standard"], version = "^0.13.4"}
 asyncio-redis = "^0.16.0"
 
